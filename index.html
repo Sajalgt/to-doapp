@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3-Column Ultra Task Workspace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="workspace-container">
+        
+        <section class="form-section">
+            <div class="brand-header">
+                <h1>✨ Control Hub</h1>
+                <p>Track your execution flow</p>
+            </div>
+
+            <form id="todo-form">
+                <div class="field-group">
+                    <label>Task Title</label>
+                    <input type="text" id="task-input" placeholder="What's the goal?" required />
+                </div>
+                
+                <div class="field-group">
+                    <label>Priority Level</label>
+                    <select id="priority-input">
+                        <option value="low">🟢 Low Priority</option>
+                        <option value="medium" selected>🟡 Medium Priority</option>
+                        <option value="high">🔴 High Priority</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label>Category Tag</label>
+                    <select id="category-input">
+                        <option value="Personal">🏠 Personal</option>
+                        <option value="Work">💼 Work</option>
+                        <option value="Shopping">🛒 Shopping</option>
+                    </select>
+                </div>
+
+                <div class="field-group">
+                    <label>Target Date</label>
+                    <input type="date" id="date-input" />
+                </div>
+
+                <button type="submit" id="add-btn">+ Create Task</button>
+            </form>
+        </section>
+
+        <section class="list-section">
+            <div class="section-header">
+                <h2>📋 Active Task Workspace</h2>
+                <div class="search-bar-container">
+                    <input type="text" id="search-input" placeholder="🔍 Direct search item..." />
+                    <select id="filter-select">
+                        <option value="all">All Status</option>
+                        <option value="pending">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="scroll-list-wrapper">
+                <ul id="todo-list"></ul>
+            </div>
+        </section>
+
+        <section class="graph-section">
+            <h2>📊 Real-Time Matrix</h2>
+            
+            <div class="metrics-stack">
+                <div class="metric-pill info">
+                    <span class="label">Total Managed</span>
+                    <span class="count" id="total-stats">0</span>
+                </div>
+                <div class="metric-pill warning">
+                    <span class="label">Pending Action</span>
+                    <span class="count" id="pending-stats">0</span>
+                </div>
+                <div class="metric-pill success">
+                    <span class="label">Done & Closed</span>
+                    <span class="count" id="completed-stats">0</span>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <h3>Workspace Efficiency</h3>
+                <div class="svg-wrapper">
+                    <svg class="progress-ring" width="180" height="180">
+                        <circle class="progress-ring__bg" stroke="#e2e8f0" stroke-width="14" fill="transparent" r="72" cx="90" cy="90"/>
+                        <circle class="progress-ring__bar" id="progress-bar-circle" stroke="#6366f1" stroke-width="14" fill="transparent" r="72" cx="90" cy="90"/>
+                    </svg>
+                    <div class="chart-counter-label">
+                        <span id="chart-pct-text">0%</span>
+                        <small>Completed</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="backup-box">
+                <h4>Data Management</h4>
+                <div class="backup-actions">
+                    <button id="export-btn">📥 Export Backup</button>
+                    <button id="import-trigger-btn" onclick="document.getElementById('import-file').click()">📤 Import Backup</button>
+                    <input type="file" id="import-file" accept=".json" style="display: none;" />
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
